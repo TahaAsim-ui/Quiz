@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+The required Python lines are:
+
+\begin{verbatim}
+a. x = model.addVars(range(1, 9), vtype=GRB.BINARY, name="x")
+
+b. model.setObjective(
+       gp.quicksum(x[j] for j in range(1, 9)), GRB.MINIMIZE
+   )
+
+c. model.addConstr(
+       x[1] + x[2] + x[3] + x[4] >= 1,
+       name="location_1"
+   )
+
+d. model.addConstr(
+       x[1] + x[2] + x[3] + x[4] + x[5] >= 1,
+       name="location_2"
+   )
+\end{verbatim}
+
+Here, x[j] equals 1 when an officer is assigned to location j and equals 0
+otherwise. The last two lines ensure that locations 1 and 2 are each protected
+by at least one officer stationed less than 100 metres away.
+
+\end{document}

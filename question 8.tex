@@ -1,0 +1,46 @@
+\documentclass[12pt,fleqn]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setlength{\mathindent}{0pt}
+\mathcode`x="0078
+\mathcode`y="0079
+
+\begin{document}
+
+Rewrite the constraint so that its left side is 1 minus x minus y, which must
+not greater than zero, and let lambda be its nonnegative multipler. The
+Lagrangian is
+\[
+L(x,y,\lambda)=x^2+y^2+\lambda(1-x-y).
+\]
+
+The KKT conditions are
+\begin{align*}
+2x-\lambda &= 0,\\
+2y-\lambda &= 0,\\
+x+y &\geq 1,\\
+\lambda &\geq 0,\\
+\lambda(1-x-y) &= 0.
+\end{align*}
+
+The first two conditions show that x equals y. Lambda cannot equal zero,
+because that would give x and y both equal to zero, which does not satisfy the
+constraint. Therefore, lambda is postive, so if $x+y$ was greater than 1 and you
+could move closer to the origin and make $x^2+y^2$ smaller. Making it so that the
+min occurs right on the line with $x+y=1$.
+
+Since x equals y, the solution is
+\[
+x^*=\frac{1}{2}, \qquad y^*=\frac{1}{2}, \qquad \lamda^*=1.
+\]
+The minimum objective value is
+\[
+f^*=\left(\frac{1}{2}\right)^2+\left(\frac{1}{2}\right)^2
+=\frac{1}{2}.
+\]
+
+The objective function is strictly convex and the feasible region is convex.
+Therefore, this solution is the unique global minimum.
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[12pt,fleqn]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setlength{\mathindent}{0pt}
+\mathcode`x="0078
+\mathcode`y="0079
+
+\begin{document}
+
+For each location j, let x equal 1 if an officer is stationed there and 0
+otherwise. For each pair of locatons i and j that are less than 100 metres
+apart, let y equal 1 if the officer at location j protects location i and 0
+otherwise
+
+The objective is to hire as few officers as possible:
+\begin{verbatim}
+min Z = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8
+\end{verbatim}
+
+Each location must be protected by one nearby officer:
+\begin{verbatim}
+y11 + y12 + y13 + y14 = 1                         (location 1)
+y21 + y22 + y23 + y24 + y25 = 1                   (location 2)
+y31 + y32 + y33 + y35 + y36 + y38 = 1             (location 3)
+y41 + y42 + y44 + y47 = 1                         (location 4)
+y52 + y53 + y55 + y56 + y58 = 1                   (location 5)
+y63 + y65 + y66 + y67 + y68 = 1                   (location 6)
+y74 + y76 + y77 + y78 = 1                         (location 7)
+y83 + y85 + y86 + y87 + y88 = 1                   (location 8)
+\end{verbatim}
+
+An officer stationed at a location also protects that location, so
+\begin{verbatim}
+yjj = xj, for j = 1, ..., 8
+\end{verbatim}
+
+Each officer may protect at most two other nearby locations. Therefore,
+\begin{verbatim}
+y21 + y31 + y41 <= 2x1                            (officer at location 1)
+y12 + y32 + y42 + y52 <= 2x2                      (officer at location 2)
+y13 + y23 + y53 + y63 + y83 <= 2x3                (officer at location 3)
+y14 + y24 + y74 <= 2x4                            (officer at location 4)
+y25 + y35 + y65 + y85 <= 2x5                      (officer at location 5)
+y36 + y56 + y76 + y86 <= 2x6                      (officer at location 6)
+y47 + y67 + y87 <= 2x7                            (officer at location 7)
+y38 + y58 + y68 + y78 <= 2x8                      (officer at location 8)
+\end{verbatim}
+
+All x and y variables are binary. These constraints ensure that every location
+is protected and that each officer covers no more than three locations in
+total: the officer's own location and at most two others.
+
+\end{document}
